@@ -80,7 +80,8 @@ public class BadgeIndicator extends RelativeLayout {
 
     public void updateCount(int value) {
         if (this.textView != null) {
-            if (value <= 0) {
+            // For those who wants to display zero as default.
+            if (value < 0) {
                 show(false);
             } else {
 
@@ -88,7 +89,7 @@ public class BadgeIndicator extends RelativeLayout {
                     value = 99;
                 }
 
-                this.textView.setText(value < 10 ? "0" + value : value + "");
+                this.textView.setText(value < 10 && value > 0 ? "0" + value : value + "");
                 show(true);
             }
         }
